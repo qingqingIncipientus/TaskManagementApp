@@ -33,16 +33,22 @@ A web application for simple task management.
 You will follow the specific instructions in the test files. Try to do as many as possible but no need to stress yourself if you can not finish all of them.
 ## Unit tests
 Please open calculations.spec.ts and complete the test cases.
-### Test File Path: .\TaskManagementApp\src\app\Helpers\calculations.spec.ts
-### Source File Path: .\TaskManagementApp\src\app\Helpers\calculations.ts
+### Test File Path: 
+.\TaskManagementApp\src\app\Helpers\calculations.spec.ts
+### Source File Path: 
+.\TaskManagementApp\src\app\Helpers\calculations.ts
 
 ## Integration tests
 Please open task.service.spec.ts and user.service.spec.ts and complete the test cases.
-### Test File Path: .\TaskManagementApp\src\app\services\task.service.spec.ts
-### Source File Path: .\TaskManagementApp\src\app\services\task.service.ts
+### Test File Path: 
+.\TaskManagementApp\src\app\services\task.service.spec.ts
+### Source File Path: 
+.\TaskManagementApp\src\app\services\task.service.ts
 
-### Test File Path: .\TaskManagementApp\src\app\services\user.service.spec.ts
-### Source File Path: .\TaskManagementApp\src\app\services\user.service.ts
+### Test File Path: 
+.\TaskManagementApp\src\app\services\user.service.spec.ts
+### Source File Path: 
+.\TaskManagementApp\src\app\services\user.service.ts
 
 ## E2E tests
 Please open calculations.spec.ts and complete the test cases.
