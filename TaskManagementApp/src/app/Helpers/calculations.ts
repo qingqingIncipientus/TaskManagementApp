@@ -12,9 +12,9 @@ export default class Calculations
 
     static calculatePercentageStandardDeviationOfTwoDimensionalArray(array: number[][]): number
     {
-        const mean = array.reduce((acc, val) => acc + val.reduce((acc2, val2) => acc2 + val2, 0), 0) / array.length;
+        const mean = array.reduce((acc, val) => acc + val.reduce((acc2, val2) => acc2 + val2, 0), 0) / (array.length * array[0].length);
         const squaredDifferences = array.map(value => value.map(val => Math.pow(val - mean, 2)));
-        const variance = squaredDifferences.reduce((acc, val) => acc + val.reduce((acc2, val2) => acc2 + val2, 0), 0) / array.length;
+        const variance = squaredDifferences.reduce((acc, val) => acc + val.reduce((acc2, val2) => acc2 + val2, 0), 0) / (array.length * array[0].length);
         const stdDeviation = Math.sqrt(variance);
         const percentageSTD = Math.abs((stdDeviation / mean) * 100); // Take absolute value
         return percentageSTD;
@@ -39,7 +39,7 @@ export default class Calculations
 
     static calculateAverageOfTwoDimensionalArray(array: number[][]): number
     {
-        return array.reduce((acc, val) => acc + val.reduce((acc2, val2) => acc2 + val2, 0), 0) / array.length;
+        return array.reduce((acc, val) => acc + val.reduce((acc2, val2) => acc2 + val2, 0), 0) / (array.length * array[0].length);
     }
 
     static getMostFrequentValueAtEachSubarray(array: number[][]): number[]
@@ -72,7 +72,7 @@ export default class Calculations
         });
     }
 
-    static getAvreageValueOfHighestPercentageOfEachSubarray(array: number[][], percentage: number): number[]
+    static getAverageValueOfHighestPercentageOfEachSubarray(array: number[][], percentage: number): number[]
     {
         return array.map(subArray =>
         {
@@ -82,17 +82,23 @@ export default class Calculations
         });
     }
 
-    static getAverageValueOfEachSubarryAfterRemoveingOutliers(array: number[][]): number[]
+    static getAverageValueOfEachSubarryAfterRemovingOutliers(array: number[][]): number[]
     {
         return array.map(subArray =>
         {
-            const sorted = subArray.sort((a, b) => a - b);
+            const sorted = [...subArray].sort((a, b) => a - b);
             const lowerQuartile = sorted[Math.floor(sorted.length * 0.25)];
             const upperQuartile = sorted[Math.floor(sorted.length * 0.75)];
             const iqr = upperQuartile - lowerQuartile;
             const lowerBound = lowerQuartile - (1.5 * iqr);
             const upperBound = upperQuartile + (1.5 * iqr);
             const filtered = subArray.filter(value => value >= lowerBound && value <= upperBound);
+
+            if (filtered.length === 0)
+            {
+                return 0;
+            }
+
             return filtered.reduce((acc, val) => acc + val, 0) / filtered.length;
         });
     }
